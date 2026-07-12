@@ -1,3 +1,3 @@
 module github.com/morkid/cfmanui
 
-go 1.20
+go 1.26
