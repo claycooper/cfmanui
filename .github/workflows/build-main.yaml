@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "main"
+      - "deps/major-bumps"
 
 permissions:
   contents: read
@@ -112,8 +113,9 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=raw,value=latest
-            type=sha,prefix=sha-,format=short
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=sha-{{sha}},enable={{is_default_branch}}
+            type=raw,value={{branch}}-sha-{{sha}},enable={{is_not_default_branch}}
       - name: Download binaries
         uses: actions/download-artifact@v8
         with:
