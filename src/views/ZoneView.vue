@@ -89,7 +89,7 @@ export default {
         var response = await this.api.get(`/client/v4/zones${queryString}`)
         this.zones = [...response.data.result]
         this.pagination = {...response.data.result_info}
-      } catch (e) {
+      } catch {
         this.error = 'cannot get zones'
       } finally {
         this.processing = false

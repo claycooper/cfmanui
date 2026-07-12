@@ -55,7 +55,7 @@ export default class Api {
   }
 
   getError(err, defaultMessage = 'Something went wrong.') {
-    let errorMessage = ''
+    let errorMessage
 
     try {
       if (err.response) {
@@ -65,7 +65,7 @@ export default class Api {
       } else {
         errorMessage = err.message
       }
-    } catch(e) {
+    } catch {
       errorMessage = defaultMessage
     }
 
